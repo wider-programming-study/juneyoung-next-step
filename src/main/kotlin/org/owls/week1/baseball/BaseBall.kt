@@ -61,7 +61,7 @@ class BaseBall(private val reader:InputReader<Any>, private val presenter:Presen
         return GameResult(strikes, balls, fouls)
     }
 
-    fun play(){
+    override fun play(){
         prepareAnswer()
         showGuide()
         val operation = getOperation()
