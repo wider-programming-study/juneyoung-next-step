@@ -31,15 +31,15 @@ class TestBaseBall {
         // get InnerMethod
         val innerPlay = sut.javaClass.getDeclaredMethod("innerPlay", String::class.java)
         innerPlay.isAccessible = true
-        val actual = innerPlay.invoke(sut, "123") as GameResult
+        val actual = innerPlay.invoke(sut, "123") as BaseballResult
 
-        val expected = GameResult(1, 1, 1)
+        val expected = BaseballResult(1, 1, 1)
         Assertions.assertEquals(actual.strike, expected.strike)
         Assertions.assertEquals(actual.ball, expected.ball)
         Assertions.assertEquals(actual.foul, expected.foul)
 
-        val actual2 = innerPlay.invoke(sut, "132") as GameResult
-        val expected2 = GameResult(1, 2, 0)
+        val actual2 = innerPlay.invoke(sut, "132") as BaseballResult
+        val expected2 = BaseballResult(1, 2, 0)
         Assertions.assertEquals(actual2.strike, expected2.strike)
         Assertions.assertEquals(actual2.ball, expected2.ball)
         Assertions.assertEquals(actual2.foul, expected2.foul)
