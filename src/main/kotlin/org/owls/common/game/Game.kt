@@ -1,5 +1,5 @@
 package org.owls.common.game
 
-interface Game {
-    fun play()
+interface Game <in P: GameInsert, out R: GameResult>{
+    fun play(input: P): R
 }
