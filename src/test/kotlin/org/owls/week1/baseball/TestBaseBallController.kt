@@ -2,12 +2,9 @@ package org.owls.week1.baseball
 
 import kotlin.test.Test
 import mu.KotlinLogging
-import org.junit.jupiter.api.Assertions
-import org.owls.common.ConsoleInputReader
 import org.owls.common.ConsolePresenter
 import org.owls.common.InputReader
 
-val kotlinLogger = KotlinLogging.logger {}
 
 /**
  * 미구현 분
@@ -25,10 +22,10 @@ class TestBaseBall {
     }
 
     @Test fun testJudge() {
-        val testInput: TestInputReader = TestInputReader(MOCK_INPUTS)
+        val testInput = TestInputReader(MOCK_INPUTS)
         val testPresenter = ConsolePresenter()
-        val sut = BaseBall(testInput, testPresenter)
+        val sut = BaseBallController(testInput, testPresenter)
+        val mockGame =
         sut.play()
-
     }
 }

@@ -2,8 +2,9 @@ package org.owls.week1.baseball
 
 import org.owls.common.InputReader
 import org.owls.common.Presenter
-import org.owls.common.game.BaseballGame
-import org.owls.common.game.BaseballInput
+import org.owls.week1.baseball.game.BaseballGame
+import org.owls.week1.baseball.game.BaseballInput
+import org.owls.common.game.GameController
 import kotlin.random.Random
 import kotlin.system.exitProcess
 
@@ -13,7 +14,7 @@ import kotlin.system.exitProcess
  * - data 클래스의 toString 에 대한 검증
  * - input_handler 와 output_handler 를 생성자로 받아서 처리하는 방식도 있음
  */
-class BaseBall(private val reader:InputReader<Any>, private val presenter:Presenter) {
+class BaseBallController(private val reader:InputReader<Any>, private val presenter:Presenter): GameController {
     private lateinit var answer:String
     private fun getOperation(): String {
         presenter.out("""
@@ -41,7 +42,7 @@ class BaseBall(private val reader:InputReader<Any>, private val presenter:Presen
         answer = tempAnswer.joinToString("")
     }
 
-    fun play() {
+    override fun play() {
         prepareAnswer()
         showGuide()
         val operation = getOperation()

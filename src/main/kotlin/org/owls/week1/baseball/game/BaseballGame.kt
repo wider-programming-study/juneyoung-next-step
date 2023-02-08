@@ -1,5 +1,8 @@
-package org.owls.common.game
+package org.owls.week1.baseball.game
 
+import org.owls.common.game.Game
+import org.owls.common.game.GameInsert
+import org.owls.common.game.GameResult
 import kotlin.random.Random
 
 class BaseballGame: Game<BaseballInput, BaseballResult> {
@@ -29,11 +32,11 @@ class BaseballGame: Game<BaseballInput, BaseballResult> {
     }
 }
 
-data class BaseballInput(val userInput: String):GameInsert {
+data class BaseballInput(val userInput: String): GameInsert {
     val numbers: Array<String> = Array(userInput.length) { userInput[it].toString() }
 }
 
-data class BaseballResult(val strike:Int, val ball:Int, val foul:Int):GameResult {
+data class BaseballResult(val strike:Int, val ball:Int, val foul:Int): GameResult {
     override fun toString(): String {
         return "$strike strikes, $ball balls, $foul fouls"
     }
