@@ -13,7 +13,7 @@ class RacingGameController(private val reader: InputReader<Any>, private val pre
         presenter.out("""
             경주마 이름을 입력하세요(이름은 쉼표(,) 로 구분)
         """.trimIndent())
-        val names = reader.read().toString().trim().split(",")
+        val names = this.reader.read().toString().trim().split(",")
         var players = mutableListOf<Horse>()
         for(name in names) {
             players.add(Horse(name, 0))
@@ -25,7 +25,7 @@ class RacingGameController(private val reader: InputReader<Any>, private val pre
         presenter.out("""
             시도할 횟수는 몇회인가요?
         """.trimIndent())
-        val rounds = reader.read().toString().trim()
+        val rounds = this.reader.read().toString().trim()
         return rounds.toInt()
     }
 
@@ -46,8 +46,8 @@ class RacingGameController(private val reader: InputReader<Any>, private val pre
             throw IllegalArgumentException("라운드는 최소 1 이상이어야 합니다")
         }
         val racingGameInput = RacingGameInput(entries, rounds)
-        val game = RacingGame(handleRound)
+        val game = RacingGame(this.handleRound)
         val winners = game.play(racingGameInput) // 아 매라운드 결과 찍어야 되잖아...
-        // 우승자 안알려주는 거 뭐임...
+        this.presenter.out(winners.toString())
     }
 }
