@@ -16,7 +16,7 @@ class RacingGameController(private val reader: InputReader<Any>, private val pre
         val names = this.reader.read().toString().trim().split(",")
         var players = mutableListOf<Horse>()
         for(name in names) {
-            players.add(Horse(name, 0))
+            players.add(Horse(name.trim(), 0))
         }
         return players
     }
